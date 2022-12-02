@@ -15,6 +15,9 @@ namespace Plugin\FacebookIntegration\Controller;
 
 use Eccube\Controller\AbstractController;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
+use Plugin\FacebookIntegration\Entity\Config;
+use Plugin\FacebookIntegration\Repository\ConfigRepository;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -28,8 +31,18 @@ class FacebookController extends AbstractController
      *
      * @Route("/connect", name="facebook_connect")
      */
-    public function connect(ClientRegistry $clientRegistry)
+    public function connect(ClientRegistry $clientRegistry, ConfigRepository $configRepository)
     {
+        /** @var Config $Config */
+        $Config = $configRepository->get();
+        if (!$Config) {
+            throw new NotFoundHttpException();
+        }
+
+        if (!$Config->getClientId() || !$Config->getClientSecret()) {
+            throw new NotFoundHttpException();
+        }
+
         return $clientRegistry
             ->getClient('facebook')
             ->redirect([

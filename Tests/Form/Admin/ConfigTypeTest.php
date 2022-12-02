@@ -36,7 +36,8 @@ class ConfigTypeTest extends AbstractTypeTestCase
         $this->form = $this->formFactory
             ->createBuilder(ConfigType::class, null, [
                 'csrf_protection' => false,
-            ]);
+            ])
+            ->getForm();
     }
 
     public function test正しいデータ()
