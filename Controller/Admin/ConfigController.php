@@ -59,8 +59,8 @@ class ConfigController extends AbstractController
             $env = file_get_contents($envFile);
 
             $env = StringUtil::replaceOrAddEnv($env, [
-                'OAUTH_FACEBOOK_CLIENT_ID' => $Config->getAppId(),
-                'OAUTH_FACEBOOK_CLIENT_SECRET' => $Config->getAppSecret(),
+                'OAUTH_FACEBOOK_CLIENT_ID' => $Config->getClientId(),
+                'OAUTH_FACEBOOK_CLIENT_SECRET' => $Config->getClientSecret(),
             ]);
 
             file_put_contents($envFile, $env);
