@@ -28,13 +28,13 @@ class ConfigType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('appId', TextType::class, [
+        $builder->add('clientId', TextType::class, [
             'constraints' => [
                 new NotBlank(),
                 new Length(['max' => 255]),
             ],
         ]);
-        $builder->add('appSecret', TextType::class, [
+        $builder->add('clientSecret', TextType::class, [
             'constraints' => [
                 new NotBlank(),
                 new Length(['max' => 255]),

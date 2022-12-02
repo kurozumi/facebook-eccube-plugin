@@ -34,12 +34,12 @@ if (!class_exists(Config::class, false)) {
         /**
          * @ORM\Column(type="string", length=255, nullable=true)
          */
-        private $appId;
+        private $clientId;
 
         /**
          * @ORM\Column(type="string", length=255, nullable=true)
          */
-        private $appSecret;
+        private $clientSecret;
 
         /**
          * @return int
@@ -52,18 +52,18 @@ if (!class_exists(Config::class, false)) {
         /**
          * @return string|null
          */
-        public function getAppId(): ?string
+        public function getClientId(): ?string
         {
-            return $this->appId;
+            return $this->clientId;
         }
 
         /**
-         * @param string $appId
+         * @param string $clientId
          * @return $this
          */
-        public function setAppId(string $appId): self
+        public function setClientId(string $clientId): self
         {
-            $this->appId = $appId;
+            $this->clientId = $clientId;
 
             return $this;
         }
@@ -71,18 +71,18 @@ if (!class_exists(Config::class, false)) {
         /**
          * @return string|null
          */
-        public function getAppSecret(): ?string
+        public function getClientSecret(): ?string
         {
-            return $this->appSecret;
+            return $this->clientSecret;
         }
 
         /**
-         * @param string $appSecret
+         * @param string $clientSecret
          * @return $this
          */
-        public function setAppSecret(string $appSecret): self
+        public function setClientSecret(string $clientSecret): self
         {
-            $this->appSecret = $appSecret;
+            $this->clientSecret = $clientSecret;
 
             return $this;
         }
