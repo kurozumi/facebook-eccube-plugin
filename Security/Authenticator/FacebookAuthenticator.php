@@ -134,6 +134,10 @@ class FacebookAuthenticator extends OAuth2Authenticator implements Authenticatio
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         if ($exception instanceof FinishRegistrationException) {
+            $this->saveUserInfoToSession($request, $exception);
+
+            return new RedirectResponse($this->router->generate('entry'));
+        } else {
             $this->saveAuthenticationErrorToSession($request, $exception);
             $this->session->remove('access_token');
 
